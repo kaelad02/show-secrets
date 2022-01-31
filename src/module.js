@@ -1,5 +1,5 @@
 import { fetchSettings, registerSettings, showSecrets } from "./settings.js";
-import dnd5e from "./settings/dnd5e.js";
+import dnd5e from "./systems/dnd5e.js";
 
 Hooks.once("init", () => {
   registerSettings();
