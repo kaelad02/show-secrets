@@ -1,6 +1,10 @@
+import { fetchSettings, registerSettings, showSecrets } from "./settings.js";
 import dnd5e from "./dnd5e.js";
 
 Hooks.once("init", () => {
+  registerSettings();
+  fetchSettings();
+
   // initialize based on the game system
   switch (game.system.id) {
     case "dnd5e":
@@ -18,7 +22,9 @@ function initCommon() {
   libWrapper.register(
     "show-secrets",
     "CONFIG.ChatMessage.documentClass.prototype.prepareData",
-    function () {
+    function (wrapped, ...args) {
+      if (!showSecrets()) return wrapped(...args);
+
       Object.getPrototypeOf(ChatMessage).prototype.prepareData.apply(this);
       const actor =
         this.constructor.getSpeakerActor(this.data.speaker) ||
@@ -32,6 +38,6 @@ function initCommon() {
         }),
       });
     },
-    "OVERRIDE"
+    "MIXED"
   );
 }
