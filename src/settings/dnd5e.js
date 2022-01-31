@@ -1,4 +1,4 @@
-import { showSecrets } from "./settings";
+import { showSecrets } from "../settings.js";
 
 /**
  * Specific initialization for the dnd5e system. Specifically, wraps
