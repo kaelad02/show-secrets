@@ -1,0 +1,20 @@
+{
+  "name": "show-secrets",
+  "title": "Show Secrets",
+  "description": "Show secret blocks in chat messages.",
+  "author": "kaelad",
+  "version": "0.1",
+  "minimumCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "9",
+  "systems": [
+    "dnd5e"
+  ],
+  "esmodules": [
+    "src/module.js"
+  ],
+  "url": "replaced by workflow",
+  "manifest": "replaced by workflow",
+  "download": "replaced by workflow",
+  "changelog": "replaced by workflow",
+  "readme": "replaced by workflow"
+}
