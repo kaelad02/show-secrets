@@ -9,3 +9,9 @@ Viewing the secret blocks does require that the user be an owner of the actor th
 ## Settings
 
 There is a setting to choose whether this behavior works for GMs only (default) or for everyone.
+
+## System Compatibility
+
+This module has been tested with and is known to work with the following systems:
+
+- dnd5e
