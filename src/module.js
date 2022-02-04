@@ -11,6 +11,8 @@ Hooks.once("init", () => {
       initCommon();
       dnd5e();
       break;
+    default:
+      initCommon();
   }
 });
 
