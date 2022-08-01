@@ -1,3 +1,7 @@
+# 2.0
+
+- update to be compatible with v10
+
 # 1.1
 
 - bug fix: [#2](https://github.com/kaelad02/show-secrets/issues/2) Manifest was missing a dependency on lib-wrapper
