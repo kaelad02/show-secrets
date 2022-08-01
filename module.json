@@ -1,16 +1,26 @@
 {
-  "name": "show-secrets",
+  "id": "show-secrets",
   "title": "Show Secrets",
   "description": "Show secret blocks in chat messages.",
-  "author": "kaelad",
-  "version": "0.1",
-  "minimumCoreVersion": "0.8.9",
-  "compatibleCoreVersion": "9",
-  "dependencies": [
+  "authors": [
     {
-      "name": "lib-wrapper"
+      "name": "kaelad",
+      "discord": "kaelad#1693"
     }
   ],
+  "version": "0.1",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10"
+  },
+  "relationships": {
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module"
+      }
+    ]
+  },
   "esmodules": [
     "src/module.js"
   ],
