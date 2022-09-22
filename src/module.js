@@ -78,6 +78,15 @@ async function wrappedGetHTML(wrapped, ...args) {
   // Flag expanded state of dice rolls
   if ( this._rollExpanded ) html.find(".dice-tooltip").addClass("expanded");
 
+  // Add HTMLSecret to include new "reveal secret" button support
+  new HTMLSecret({
+    parentSelector: "div.message-content",
+    callbacks: {
+      content: (secret) => this.content,
+      update: (secret, content) => this.update({ content }),
+    },
+  }).bind(html[0]);
+
   /**
    * A hook event that fires for each ChatMessage which is rendered for addition to the ChatLog.
    * This hook allows for final customization of the message HTML before it is added to the log.

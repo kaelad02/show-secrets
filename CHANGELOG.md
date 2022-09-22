@@ -1,3 +1,7 @@
+# 2.1
+
+- feature: add support for v10's "reveal secret" button
+
 # 2.0
 
 - update to be compatible with v10
