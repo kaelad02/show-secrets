@@ -1,3 +1,7 @@
+# 2.1.1
+
+- bug fix: [#7](https://github.com/kaelad02/show-secrets/issues/7) Pathfinder 2e damage buttons do not work
+
 # 2.1
 
 - feature: add support for v10's "reveal secret" button

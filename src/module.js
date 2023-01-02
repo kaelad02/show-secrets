@@ -17,16 +17,11 @@ Hooks.once("init", () => {
 });
 
 /**
- * Common initialization to change core Foundry code. Specifically, overrides
- * ChatMessage.prepareData so it doesn't strip out secrets.
+ * Common initialization to change core Foundry code. Specifically, changes
+ * ChatMessage.getHTML so it doesn't strip out secrets.
  */
 function initCommon() {
-  libWrapper.register(
-    "show-secrets",
-    "CONFIG.ChatMessage.documentClass.prototype.getHTML",
-    wrappedGetHTML,
-    "MIXED"
-  );
+  libWrapper.register("show-secrets", "ChatMessage.prototype.getHTML", wrappedGetHTML, "MIXED");
 }
 
 async function wrappedGetHTML(wrapped, ...args) {
