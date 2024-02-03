@@ -1,3 +1,8 @@
+# 3.0
+
+- feature: update to v11
+- bug fix: make compatible with dnd5e version 3.0
+
 # 2.1.1
 
 - bug fix: [#7](https://github.com/kaelad02/show-secrets/issues/7) Pathfinder 2e damage buttons do not work
