@@ -1,4 +1,4 @@
-# 3.0
+# 3.0.0
 
 - feature: update to v11
 - bug fix: make compatible with dnd5e version 3.0
