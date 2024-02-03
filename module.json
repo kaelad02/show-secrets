@@ -10,7 +10,7 @@
   ],
   "version": "0.1",
   "compatibility": {
-    "minimum": "11,
+    "minimum": "11",
     "verified": "11"
   },
   "relationships": {
