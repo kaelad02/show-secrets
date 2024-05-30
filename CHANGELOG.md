@@ -1,3 +1,7 @@
+# 4.0.0
+
+- feature: update to v12
+
 # 3.0.0
 
 - feature: update to v11

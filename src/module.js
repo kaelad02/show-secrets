@@ -29,26 +29,26 @@ async function wrappedGetHTML(wrapped, ...args) {
 
   // Determine some metadata
   const data = this.toObject(false);
-  const actor = this.constructor.getSpeakerActor(this.speaker) || this.user?.character;
+  const actor = this.constructor.getSpeakerActor(this.speaker) ?? this.author?.character;
   const rollData = actor ? actor.getRollData() : {};
   // Show secrets if we're the owner
   const secrets = actor ? actor.isOwner : false;
-  data.content = await TextEditor.enrichHTML(this.content, {async: true, rollData, secrets});
+  data.content = await TextEditor.enrichHTML(this.content, {rollData, secrets});
   const isWhisper = this.whisper.length;
 
   // Construct message data
   const messageData = {
     message: data,
     user: game.user,
-    author: this.user,
+    author: this.author,
     alias: this.alias,
     cssClass: [
-      this.type === CONST.CHAT_MESSAGE_TYPES.IC ? "ic" : null,
-      this.type === CONST.CHAT_MESSAGE_TYPES.EMOTE ? "emote" : null,
+      this.style === CONST.CHAT_MESSAGE_STYLES.IC ? "ic" : null,
+      this.style === CONST.CHAT_MESSAGE_STYLES.EMOTE ? "emote" : null,
       isWhisper ? "whisper" : null,
       this.blind ? "blind": null
     ].filterJoin(" "),
-    isWhisper: this.whisper.some(id => id !== game.user.id),
+    isWhisper: this.whisper.length,
     canDelete: game.user.isGM,  // Only GM users are allowed to have the trash-bin icon in the chat log itself
     whisperTo: this.whisper.map(u => {
       let user = game.users.get(u);
@@ -57,14 +57,10 @@ async function wrappedGetHTML(wrapped, ...args) {
   };
 
   // Render message data specifically for ROLL type messages
-  if ( this.isRoll ) {
-    await this._renderRollContent(messageData);
-  }
+  if ( this.isRoll ) await this._renderRollContent(messageData);
 
   // Define a border color
-  if ( this.type === CONST.CHAT_MESSAGE_TYPES.OOC ) {
-    messageData.borderColor = this.user.color;
-  }
+  if ( this.style === CONST.CHAT_MESSAGE_STYLES.OOC ) messageData.borderColor = this.author?.color.css;
 
   // Render the chat message
   let html = await renderTemplate(CONFIG.ChatMessage.template, messageData);
@@ -81,16 +77,7 @@ async function wrappedGetHTML(wrapped, ...args) {
       update: (secret, content) => this.update({ content }),
     },
   }).bind(html[0]);
-
-  /**
-   * A hook event that fires for each ChatMessage which is rendered for addition to the ChatLog.
-   * This hook allows for final customization of the message HTML before it is added to the log.
-   * @function renderChatMessage
-   * @memberof hookEvents
-   * @param {ChatMessage} message   The ChatMessage document being rendered
-   * @param {jQuery} html           The pending HTML as a jQuery object
-   * @param {object} data           The input data provided for template rendering
-   */
+  
   Hooks.call("renderChatMessage", this, html, messageData);
   return html;
 }
