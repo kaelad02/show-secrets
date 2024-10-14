@@ -32,7 +32,7 @@ async function wrappedGetHTML(wrapped, ...args) {
   const actor = this.constructor.getSpeakerActor(this.speaker) ?? this.author?.character;
   const rollData = actor ? actor.getRollData() : {};
   // Show secrets if we're the owner
-  const secrets = actor ? actor.isOwner : false;
+  const secrets = actor ? actor.isOwner : game.user.isGM;
   data.content = await TextEditor.enrichHTML(this.content, {rollData, secrets});
   const isWhisper = this.whisper.length;
 
