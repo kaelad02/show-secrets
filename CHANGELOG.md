@@ -1,3 +1,7 @@
+# 4.0.1
+
+- bug fix: show secrets from a rollable table result to the GM
+
 # 4.0.0
 
 - feature: update to v12
