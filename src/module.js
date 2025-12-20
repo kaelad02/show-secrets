@@ -1,5 +1,3 @@
-import dnd5e from "./systems/dnd5e.js";
-
 Hooks.once("init", () => {
   // initialize based on the game system
   switch (game.system.id) {
@@ -8,3 +6,15 @@ Hooks.once("init", () => {
       break;
   }
 });
+
+function dnd5e() {
+  libWrapper.register(
+    "show-secrets",
+    "dnd5e.dataModels.ItemDataModel.prototype.getCardData",
+    function (wrapped, { activity, ...enrichmentOptions }={}) {
+      enrichmentOptions.secrets = this.parent.isOwner;
+      return wrapped({ activity, ...enrichmentOptions });
+    },
+    "WRAPPER"
+  );
+}
