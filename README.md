@@ -10,12 +10,8 @@ Secret blocks are a great way for GMs to keep information hidden from players. I
 
 **Note:** Viewing the secret blocks does require that the user be an owner of the actor that generated the message.
 
-## Settings
-
-There is a setting to choose whether this behavior works for GMs only (default) or for everyone.
-
 ## System Compatibility
 
-This module has been tested with and is known to work with the following systems:
+Since Foundry v13, this module is no longer necessary for most game systems as the core Foundry software will now show secrets in chat messages on its own. There is still some system-specific code though for the following game systems:
 
 - dnd5e

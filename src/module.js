@@ -4,6 +4,9 @@ Hooks.once("init", () => {
     case "dnd5e":
       dnd5e();
       break;
+    default:
+      console.warn("Show Secrets is not needed for this game system. You may safely disable the module.");
+      break;
   }
 });
 
